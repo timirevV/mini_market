@@ -1,2 +1,2 @@
-export * from './compiled-types/components/Catalog';
-export { default } from './compiled-types/components/Catalog';
+export * from './compiled-types/pages/Catalog/index';
+export { default } from './compiled-types/pages/Catalog/index';

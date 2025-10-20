@@ -4,7 +4,7 @@ export default createModuleFederationConfig({
   name: "catalog",
   filename: "remoteEntry.js",
   exposes: {
-    "./Catalog": "./src/components/Catalog.tsx",
+    "./Catalog": "./src/pages/Catalog/index.tsx",
   },
   shared: {
     react: { singleton: true },

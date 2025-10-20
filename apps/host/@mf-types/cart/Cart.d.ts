@@ -1,2 +1,2 @@
-export * from './compiled-types/components/Cart';
-export { default } from './compiled-types/components/Cart';
+export * from './compiled-types/pages/Cart/index';
+export { default } from './compiled-types/pages/Cart/index';

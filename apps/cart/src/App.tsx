@@ -1,5 +1,5 @@
-import './App.css';
-import Provider from './components/Cart';
+import "./App.css";
+import Provider from "./pages/Cart/index";
 
 const App = () => {
   return (

@@ -4,7 +4,7 @@ export default createModuleFederationConfig({
   name: "cart",
   filename: "remoteEntry.js",
   exposes: {
-    './Cart': './src/components/Cart.tsx', 
+    "./Cart": "./src/pages/Cart/index.tsx",
   },
   shared: {
     react: { singleton: true },
