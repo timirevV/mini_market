@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { ConfirmButton } from "./style";
 import { CartItem } from "../../interfaces";
 import { calculateCartSum } from "../../shared/utils/calculateCartSum";
 import { loadCart, saveCart } from "../../shared/utils/cartStorage";
 import { updateQuantity } from "../../shared/utils/cartUtils";
 import CartTable from "../../components/CartTable";
+import CardForm from "../../components/CardForm";
+import BasicModal from "../../components/UI/Modal";
 
 const Cart = () => {
   const [cartSum, setCartSum] = useState<number>(0);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isReadyBuy, setIsReadyBuy] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const { items, total } = loadCart();
@@ -51,7 +53,15 @@ const Cart = () => {
     saveCart(updatedItems);
   };
 
-  const handleStateBuy = () => setIsReadyBuy(true);
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  const handlePaymentSuccess = () => {
+    handleCloseModal();
+    setCartItems([]);
+    setCartSum(0);
+    saveCart([]);
+  };
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "32px" }}>
@@ -66,12 +76,18 @@ const Cart = () => {
       <ConfirmButton
         variant="contained"
         disabled={cartSum === 0}
-        onClick={handleStateBuy}
+        onClick={handleOpenModal}
       >
         Оформить
       </ConfirmButton>
 
-      {isReadyBuy && <Typography>Ready</Typography>}
+      <BasicModal
+        open={isModalOpen}
+        onClose={handleCloseModal}
+        title="Оплата заказа"
+      >
+        <CardForm onSuccess={handlePaymentSuccess} cartSum={cartSum}/>
+      </BasicModal>
     </Box>
   );
 };
