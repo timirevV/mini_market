@@ -62,7 +62,10 @@ const CardForm: FC<CardFormProps> = ({ onSuccess, cartSum }) => {
             type={f.type}
             rules={f.rules}
             formatValue={f.formatValue}
-            inputProps={f.inputProps}
+            inputProps={{
+              "data-testid": f.name,
+              ...f.inputProps,
+            }}
             onValueChange={(v) =>
               setCard(
                 (prev) => ({ ...(prev as CardData), [f.name]: v } as CardData)
@@ -82,7 +85,10 @@ const CardForm: FC<CardFormProps> = ({ onSuccess, cartSum }) => {
               type={f.type}
               rules={f.rules}
               formatValue={f.formatValue}
-              inputProps={f.inputProps}
+              inputProps={{
+                "data-testid": f.name,
+                ...f.inputProps,
+              }}
               onValueChange={(v) =>
                 setCard(
                   (prev) => ({ ...(prev as CardData), [f.name]: v } as CardData)

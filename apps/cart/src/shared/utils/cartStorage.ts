@@ -1,4 +1,5 @@
 import { CartItem } from "../../interfaces";
+import { calculateCartSum } from "./calculateCartSum";
 
 const CART_ITEMS_KEY = "cartItems";
 const CART_TOTAL_KEY = "cartTotal";
@@ -14,7 +15,7 @@ export const loadCart = (): { items: CartItem[]; total: number } => {
 };
 
 export const saveCart = (items: CartItem[]) => {
-  const total = items.reduce((sum, item) => sum + item.cost * item.quantity, 0);
+  const total = calculateCartSum(items);
 
   localStorage.setItem(CART_ITEMS_KEY, JSON.stringify(items));
   localStorage.setItem(CART_TOTAL_KEY, total.toString());

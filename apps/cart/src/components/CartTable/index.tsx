@@ -55,18 +55,25 @@ const CartTable = ({
                   <CountButton
                     onClick={() => onDecrease(item.id)}
                     disabled={item.quantity <= 1}
+                    data-testid={`decrease-${item.id}`}
                   >
                     <RemoveIcon />
                   </CountButton>
                   {item.quantity}
-                  <CountButton onClick={() => onIncrease(item.id)}>
+                  <CountButton
+                    onClick={() => onIncrease(item.id)}
+                    data-testid={`increase-${item.id}`}
+                  >
                     <AddIcon />
                   </CountButton>
                 </Box>
               </TableCell>
               <TableCell align="right">{item.cost * item.quantity}</TableCell>
               <TableCell align="right">
-                <Button onClick={() => onRemove(item.id)}>
+                <Button
+                  onClick={() => onRemove(item.id)}
+                  data-testid={`delete-${item.id}`}
+                >
                   <DeleteIcon />
                 </Button>
               </TableCell>
