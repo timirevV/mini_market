@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
-import { ConfirmButton } from "./style";
 import { CartItem } from "../../interfaces";
 import { calculateCartSum } from "../../shared/utils/calculateCartSum";
 import { loadCart, saveCart } from "../../shared/utils/cartStorage";
@@ -8,6 +7,7 @@ import { updateQuantity } from "../../shared/utils/cartUtils";
 import CartTable from "../../components/CartTable";
 import CardForm from "../../components/CardForm";
 import BasicModal from "../../components/UI/Modal";
+import CustomButton from "../../components/UI/CustomButton";
 
 const Cart = () => {
   const [cartSum, setCartSum] = useState<number>(0);
@@ -73,20 +73,16 @@ const Cart = () => {
         onDecrease={handleDecreaseQuantity}
       />
 
-      <ConfirmButton
-        variant="contained"
-        disabled={cartSum === 0}
-        onClick={handleOpenModal}
-      >
+      <CustomButton disabled={cartSum === 0} onClick={handleOpenModal}>
         Оформить
-      </ConfirmButton>
+      </CustomButton>
 
       <BasicModal
         open={isModalOpen}
         onClose={handleCloseModal}
         title="Оплата заказа"
       >
-        <CardForm onSuccess={handlePaymentSuccess} cartSum={cartSum}/>
+        <CardForm onSuccess={handlePaymentSuccess} cartSum={cartSum} />
       </BasicModal>
     </Box>
   );

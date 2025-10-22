@@ -30,3 +30,6 @@ coverage/
 .vscode-test
 .DS_Store
 Thumbs.db
+
+*storybook.log
+storybook-static

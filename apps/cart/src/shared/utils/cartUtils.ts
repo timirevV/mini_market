@@ -12,3 +12,18 @@ export const updateQuantity = (
         : item
     )
     .filter((item) => item.quantity > 0);
+
+export const formatCardNumber = (val: string) =>
+  val
+    .replace(/\D/g, "")
+    .slice(0, 16)
+    .replace(/(.{4})/g, "$1 ")
+    .trim();
+
+export const formatExpiry = (val: string) =>
+  val
+    .replace(/\D/g, "")
+    .slice(0, 4)
+    .replace(/(\d{2})(\d{1,2})?/, (_, mm, yy) => (yy ? `${mm}/${yy}` : mm));
+
+export const formatCVC = (val: string) => val.replace(/\D/g, "").slice(0, 4);

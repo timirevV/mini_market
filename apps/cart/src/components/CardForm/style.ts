@@ -1,4 +1,4 @@
-import { Button, Input, styled, TextField } from "@mui/material";
+import { Button, styled } from "@mui/material";
 
 export const SubmitButton = styled(Button)`
   margin-top: 10;
@@ -10,17 +10,4 @@ export const SubmitButton = styled(Button)`
   background-color: #1976d2;
   color: #fff;
   cursor: pointer;
-`;
-
-export const SubmitInput = styled(TextField)`
-  display: block;
-  width: 100%;
-  margin-bottom: 10;
-  font-size: 16px;
-  border-radius: 8px;
-  outline: none;
-
-  & .MuiOutlinedInput-root {
-    width: -webkit-fill-available;
-  }
 `;
