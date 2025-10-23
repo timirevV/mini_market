@@ -1,0 +1,10 @@
+{
+  "name": "Mini Market",
+  "short_name": "MiniMarket",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1976d2",
+  "description": "Каталог и корзина товаров",
+  "icons": []
+}

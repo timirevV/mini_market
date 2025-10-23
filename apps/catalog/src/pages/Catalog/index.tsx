@@ -84,13 +84,14 @@ const Catalog = () => {
       <GridContainer container spacing={3}>
         {productsList.map((item) => (
           <CardContainer size={4} key={item.id}>
-            <StyledCard>{item.name}</StyledCard>
-            <Typography>{item.name}</Typography>
+            <StyledCard data-testid={`product-card-${item.id}`}>{item.name}</StyledCard>
+            <Typography data-testid={`product-name-${item.id}`}>{item.name}</Typography>
             <Typography>{item.cost} pуб</Typography>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <StyledButton
                 variant="contained"
                 onClick={() => addProduct(item.id, item.cost, item.name)}
+                data-testid={`add-button-${item.id}`}
               >
                 добавить{" "}
                 {(productCounts[item.id] || 0) > 0
@@ -101,6 +102,7 @@ const Catalog = () => {
                 <StyledButton
                   variant="contained"
                   onClick={() => deleteProduct(item.id)}
+                  data-testid={`remove-button-${item.id}`}
                 >
                   удалить
                 </StyledButton>

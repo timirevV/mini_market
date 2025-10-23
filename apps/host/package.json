@@ -14,7 +14,7 @@
     "styled-components": "^6.1.19"
   },
   "devDependencies": {
-    "@module-federation/rsbuild-plugin": "^0.20.0",
+    "@module-federation/rsbuild-plugin": "^0.17.1",
     "@rsbuild/core": "^1.2.15",
     "@rsbuild/plugin-react": "^1.1.1",
     "@types/react": "^18.3.11",
