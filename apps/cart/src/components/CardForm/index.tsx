@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, UseFormProps } from "react-hook-form";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { SubmitButton } from "./style";
@@ -12,28 +12,32 @@ interface CardFormProps {
   cartSum: number;
 }
 
+const INITIAL_CARD = {
+  number: "",
+  name: "",
+  expiry: "",
+  cvc: "",
+};
+
+const INITIAL_FORM: UseFormProps<CardData> = {
+  mode: "onChange",
+  defaultValues: INITIAL_CARD,
+};
+
 const CardForm: FC<CardFormProps> = ({ onSuccess, cartSum }) => {
   const {
     control,
     handleSubmit,
     reset,
     formState: { isValid },
-  } = useForm<CardData>({
-    mode: "onChange",
-    defaultValues: { number: "", name: "", expiry: "", cvc: "" },
-  });
+  } = useForm<CardData>(INITIAL_FORM);
 
-  const [card, setCard] = useState<CardData>({
-    number: "",
-    name: "",
-    expiry: "",
-    cvc: "",
-  });
+  const [card, setCard] = useState<CardData>(INITIAL_CARD);
   const [focus, setCardFocus] = useState<keyof CardData | "">("");
 
   const onSubmit = () => {
     reset();
-    setCard({ number: "", name: "", expiry: "", cvc: "" });
+    setCard(INITIAL_CARD);
     onSuccess?.();
   };
 
