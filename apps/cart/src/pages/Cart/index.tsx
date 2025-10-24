@@ -37,16 +37,8 @@ const Cart = () => {
     saveCart(updatedItems);
   };
 
-  const handleIncreaseQuantity = (id: number) => {
-    const updatedItems = updateQuantity(cartItems, id, 1);
-    setCartItems(updatedItems);
-    const newSum = calculateCartSum(updatedItems);
-    setCartSum(newSum);
-    saveCart(updatedItems);
-  };
-
-  const handleDecreaseQuantity = (id: number) => {
-    const updatedItems = updateQuantity(cartItems, id, -1);
+  const handleQuantityChange = (id: number, delta: number) => {
+    const updatedItems = updateQuantity(cartItems, id, delta);
     setCartItems(updatedItems);
     const newSum = calculateCartSum(updatedItems);
     setCartSum(newSum);
@@ -69,8 +61,8 @@ const Cart = () => {
         cartItems={cartItems}
         cartSum={cartSum}
         onRemove={handleRemoveItem}
-        onIncrease={handleIncreaseQuantity}
-        onDecrease={handleDecreaseQuantity}
+        onIncrease={(id) => handleQuantityChange(id, 1)}
+        onDecrease={(id) => handleQuantityChange(id, -1)}
       />
 
       <CustomButton disabled={cartSum === 0} onClick={handleOpenModal}>
