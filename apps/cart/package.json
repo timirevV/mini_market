@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "rsbuild dev --open",
-    "build": "rsbuild build",
+    "build": "npx rsbuild build --config ./rsbuild.config.ts",
     "preview": "rsbuild preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
