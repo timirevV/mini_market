@@ -11,5 +11,6 @@ export default defineConfig({
   },
   output: {
     cleanDistPath: true,
+    assetPrefix: "https://mini-market-cart.onrender.com/",
   },
 });
