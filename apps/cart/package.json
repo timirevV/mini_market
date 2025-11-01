@@ -39,6 +39,7 @@
     "jest-environment-jsdom": "^30.2.0",
     "storybook": "^9.1.13",
     "ts-jest": "^29.4.5",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "rsbuild": "^1.5.17"
   }
 }
